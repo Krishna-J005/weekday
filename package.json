@@ -15,7 +15,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint '*/**/*.{js, jsx, ts,tsx}'",
+    "lint:fix": "eslint '*/**/*.{js,jsx,ts,tsx,css}' --quiet --fix",
+    "pretty": "prettier --write \"**/*.{js,jsx,ts,tsx,json,mjs,css}\"",
+    "pc": "npm run lint --fix && npm run pretty",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +45,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "globals": "^15.2.0",
+    "husky": "^8.0.3",
     "prettier": "3.2.5"
   }
 }
