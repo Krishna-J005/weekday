@@ -48,25 +48,33 @@ function App() {
 
   const handleFilterChange = (value) => {
     filter.current = value;
-    // debugger;
     const { companyName, location, jobRole, minExp, minJdSalary } = value;
+
     let jobListsData = [...jobLists];
-    if (companyName && companyName !== "") {
-      jobListsData = jobListsData.filter(
-        (job) => job.companyName.toLowerCase().indexOf(companyName.toLowerCase()) !== -1,
-      );
+
+    // Filter by companyName
+    if (companyName && companyName.trim() !== "") {
+      jobListsData = jobListsData.filter((job) => job.companyName.toLowerCase().includes(companyName.toLowerCase()));
     }
-    if (minExp && minExp !== "") {
+
+    // Filter by minExp
+    if (minExp !== null && minExp !== "") {
       jobListsData = jobListsData.filter((job) => (job.minExp ? job.minExp >= +minExp : false));
     }
-    if (minJdSalary && minJdSalary !== "") {
+
+    // Filter by minJdSalary
+    if (minJdSalary !== null && minJdSalary !== "") {
       jobListsData = jobListsData.filter((job) =>
         job.minJdSalary ? job.minJdSalary >= +minJdSalary : +minJdSalary <= job.maxJdSalary,
       );
     }
+
+    // Filter by jobRole
     if (jobRole && jobRole.length > 0) {
       jobListsData = jobListsData.filter((job) => jobRole.includes(job.jobRole));
     }
+
+    // Filter by location
     if (location && location.length > 0) {
       jobListsData = jobListsData.filter((job) => {
         let ans = false;
@@ -79,8 +87,10 @@ function App() {
         return ans;
       });
     }
+
     setFilteredData(jobListsData);
   };
+
   return (
     <div className="App">
       <div className="heading">Weekday</div>
