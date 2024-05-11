@@ -1,9 +1,9 @@
-export const EXPERIENCE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export const EXPERIENCE_OPTIONS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
 // export const MIN_BASE_PAY_OPTIONS = ["0L", "5L", "10L", "15L", "20L", "30L", "40L", "50L", "60L", "70L"];
-export const MIN_BASE_PAY_OPTIONS = [0, 5, 10, 15, 20, 30, 40, 50, 60, 70];
+export const MIN_BASE_PAY_OPTIONS = ["0", "5", "10", "15", "20", "30", "40", "50", "60", "70"];
 
-export const LOCATION_OPTIONS = ["Remote", "Hybrid", "In-office"];
+export const LOCATION_OPTIONS = ["remote", "hybrid", "in-office"];
 
 export const currencySymbols = {
   USD: "$",
@@ -37,7 +37,7 @@ export const TECH_STACK_OPTIONS = [
 
 export const EMPLOYEE_COUNT = ["1-10", "11-20", "21-50", "51-100", "101-200", "201-500", "500+"];
 
-export const ROLE_OPTIONS = ["Frontend", "Backend", "Android", "IOS", "Fullstack", "Dev-Ops", "HR", "Finance", "Sales"];
+export const ROLE_OPTIONS = ["frontend", "backend", "android", "ios", "fullstack", "dev-Ops", "hr", "finance", "sales"];
 
 export const getSampleJdJSON = () => {
   return [
