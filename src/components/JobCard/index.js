@@ -39,7 +39,7 @@ function JobCards(props) {
     <div className="job-container">
       {jobLists?.map((job, id) => (
         <React.Fragment key={job.jdUid}>
-          {id !== jobLists.length - 2 ? (
+          {id !== jobLists.length - 1 ? (
             <Box sx={{ minWidth: 320, maxWidth: 400 }}>
               <Card variant="outlined" className="p-4 rounded">
                 <CardContent className="p-0">
@@ -61,7 +61,11 @@ function JobCards(props) {
                     </div>
                     <div className="flex-column gap-1 grow-1 bold">
                       <div className="gray-text">{job.companyName || ""}</div>
-                      <div className="role-color capitalize">{job.jobRole || ""}</div>
+                      <div className="role-color capitalize">
+                        {job.jobRole.length > 3
+                          ? job.jobRole[0].toUpperCase() + job.jobRole.slice(1)
+                          : job.jobRole.toUpperCase() || ""}
+                      </div>
                       <div className="black capitalize">{job.location || "India"}</div>
                     </div>
                   </div>
