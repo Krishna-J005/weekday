@@ -1,0 +1,147 @@
+.job-container {
+  display: flex;
+  flex-flow: row wrap;
+  /* justify-content: center; */
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+.text-left {
+  text-align: left;
+}
+
+.left-align {
+  display: flex;
+  justify-content: left !important;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.gray-text {
+  color: #8c8c8c;
+}
+
+.salary-text {
+  color: #4d5969;
+}
+
+.location-color {
+  color: #262626;
+}
+.exp-color {
+  color: #949494;
+  font-weight: 500;
+}
+
+.contact-header-color {
+  color: #1c1c1c;
+  font-weight: 600;
+}
+
+.contact-color {
+  color: #4d43de;
+}
+
+.black {
+  color: #212121;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.role-color {
+  color: #303030;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
+.p-4 {
+  padding: 24px 20px 16px;
+}
+
+.p-0 {
+  padding: 0px !important;
+}
+.m-2 {
+  margin: 8px;
+}
+
+.h-8 {
+  display: flex;
+  align-items: center;
+  height: 32-x;
+}
+.px-2 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.py-1 {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.mb-1 {
+  margin-bottom: 4px;
+}
+.mb-2 {
+  margin-bottom: 8px;
+}
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mb-5 {
+  margin-bottom: 20px;
+}
+
+.rounded {
+  border-radius: 1rem !important;
+  box-shadow: 0px 8px 8px rgba(117, 115, 115, 0.1);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 640px) {
+  .job-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+}
