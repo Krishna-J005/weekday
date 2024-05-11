@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import "./App.css";
+import JobFilter from "./components/JobFilter";
 import JobCards from "./components/JobCard";
 import { getSampleJdJSON } from "./constants";
 import { CircularProgress } from "@mui/material";
@@ -8,6 +9,8 @@ import Fade from "@mui/material/Fade";
 
 function App() {
   const [jobLists, setJobLists] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const filter = useRef({});
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
 
@@ -22,6 +25,10 @@ function App() {
       clearTimeout(id);
     };
   }, [pageNumber]);
+
+  useEffect(() => {
+    handleFilterChange(filter.current);
+  }, [jobLists.length]);
 
   const observer = useRef();
 
@@ -39,11 +46,47 @@ function App() {
     [pageNumber, loading],
   );
 
+  const handleFilterChange = (value) => {
+    filter.current = value;
+    // debugger;
+    const { companyName, location, jobRole, minExp, minJdSalary } = value;
+    let jobListsData = [...jobLists];
+    if (companyName && companyName !== "") {
+      jobListsData = jobListsData.filter(
+        (job) => job.companyName.toLowerCase().indexOf(companyName.toLowerCase()) !== -1,
+      );
+    }
+    if (minExp && minExp !== "") {
+      jobListsData = jobListsData.filter((job) => (job.minExp ? job.minExp >= +minExp : false));
+    }
+    if (minJdSalary && minJdSalary !== "") {
+      jobListsData = jobListsData.filter((job) =>
+        job.minJdSalary ? job.minJdSalary >= +minJdSalary : +minJdSalary <= job.maxJdSalary,
+      );
+    }
+    if (jobRole && jobRole.length > 0) {
+      jobListsData = jobListsData.filter((job) => jobRole.includes(job.jobRole));
+    }
+    if (location && location.length > 0) {
+      jobListsData = jobListsData.filter((job) => {
+        let ans = false;
+        if (location.includes("remote")) {
+          ans = job.location === "remote";
+        }
+        if (!location.includes("remote")) {
+          ans = ans || job.location !== "remote";
+        }
+        return ans;
+      });
+    }
+    setFilteredData(jobListsData);
+  };
   return (
     <div className="App">
       <div className="heading">Weekday</div>
       <div>
-        <JobCards jobLists={jobLists} cardElementRef={cardElementRef} />
+        <JobFilter handleFilterChange={handleFilterChange} />
+        <JobCards jobLists={filteredData} cardElementRef={cardElementRef} />
         <Box sx={{ height: 50, display: "flex", justifyContent: "center" }}>
           <Fade
             in={loading}
