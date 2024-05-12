@@ -7,4 +7,9 @@ export default [
   pluginJs.configs.recommended,
   pluginReactConfig,
   { settings: { react: { version: "detect" } } },
+  {
+    rules: {
+      "react/prop-types": "off", // For props validation error react/prop-types
+    },
+  },
 ];
